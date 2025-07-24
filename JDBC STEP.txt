@@ -1,0 +1,71 @@
+import java.sql.*;
+public class JdbcFullExample {
+    public static void main(String[] args) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/";
+        String dbName = "testdb";
+        String user = "root";
+        String password = "your_password";  // ?? Change to your MySQL password
+
+        Connection conn = null;
+
+        try {
+            // 1. Load Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // 2. Connect to MySQL server (no DB selected yet)
+            conn = DriverManager.getConnection(jdbcUrl, user, password);
+            Statement stmt = conn.createStatement();
+
+            // 3. Create Database if not exists
+            stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS " + dbName);
+            System.out.println("? Database created (if not exists).");
+
+            // 4. Switch to testdb
+            conn.setCatalog(dbName);
+
+            // 5. Create Table
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS users (" +
+                                    "id INT PRIMARY KEY AUTO_INCREMENT," +
+                                    "name VARCHAR(100)," +
+                                    "email VARCHAR(100))";
+            stmt.executeUpdate(createTableSQL);
+            System.out.println("? Table 'users' created.");
+
+            // 6. Insert data using PreparedStatement
+            String insertSQL = "INSERT INTO users (name, email) VALUES (?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+            pstmt.setString(1, "John Doe");
+            pstmt.setString(2, "john@example.com");
+            pstmt.executeUpdate();
+            System.out.println("? Data inserted.");
+
+            // 7. Update data
+            String updateSQL = "UPDATE users SET email=? WHERE name=?";
+            PreparedStatement pstmtUpdate = conn.prepareStatement(updateSQL);
+            pstmtUpdate.setString(1, "john.doe@example.com");
+            pstmtUpdate.setString(2, "John Doe");
+            pstmtUpdate.executeUpdate();
+            System.out.println("? Data updated.");
+
+            // 8. Select data
+            String selectSQL = "SELECT * FROM users";
+            ResultSet rs = stmt.executeQuery(selectSQL);
+            System.out.println("\n?? Users Table:");
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") + " | " +
+                                   rs.getString("name") + " | " +
+                                   rs.getString("email"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                System.out.println("\n?? Connection closed.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
