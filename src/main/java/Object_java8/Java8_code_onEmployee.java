@@ -214,6 +214,41 @@ public class Java8_code_onEmployee {
 
         //35.Increase all IT salaries by 5%
         employees.stream().filter(e -> e.getDepartment().equals("IT")).map(e -> e.getSalary() * 1.05).forEach(System.out::println);
+        System.out.println("---------------------");
+
+
+
+        //36.Find average salary of employees under 30 per department
+        Map<String,Double> ans = employees.stream().filter(a -> a.getAge() < 30)
+                .collect(Collectors.groupingBy(Employee::getDepartment,Collectors.averagingDouble(Employee::getSalary)));
+
+        System.out.println(ans);
+        System.out.println("---------------------");
+
+        //37.Get all employee names sorted by salary using collect(joining)
+        String sortedNames = employees.stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalary))
+                .map(Employee::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println(sortedNames);
+        System.out.println("---------------------");
+
+
+        //38.Find the employee with the longest name
+        Employee longestName = employees.stream().max(Comparator.comparingInt(i -> i.getName().length())).orElse(null);
+        System.out.println("longest Name is -> " + longestName);
+        System.out.println("---------------------");
+
+        //39.Find the most repeated age
+        int mostRepeatedAge = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getAge, Collectors.counting()))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(0);
+        System.out.println(mostRepeatedAge);
+
+
 
 
 
