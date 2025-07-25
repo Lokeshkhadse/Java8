@@ -132,6 +132,32 @@ public class List_Easy_Java8 {
 
 
 
+        List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50, 60);
+
+        // Sum
+        int sum = numbers.stream().mapToInt(Integer::intValue).sum();
+        System.out.println("Sum: " + sum);
+
+        // Average
+        double avg = numbers.stream().mapToInt(Integer::intValue).average().orElse(0);
+        System.out.println("Average: " + avg);
+
+        // Min
+        int min = numbers.stream().mapToInt(Integer::intValue).min().orElse(Integer.MIN_VALUE);
+        System.out.println("Min: " + min);
+
+        // Max
+        int max = numbers.stream().mapToInt(Integer::intValue).max().orElse(Integer.MAX_VALUE);
+        System.out.println("Max: " + max);
+
+        // Count
+        long count1 = numbers.stream().mapToInt(Integer::intValue).count();
+        System.out.println("Count: " + count1);
+
+
+
+
+
 
 
 
