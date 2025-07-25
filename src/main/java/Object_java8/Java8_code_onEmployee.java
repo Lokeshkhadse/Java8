@@ -72,7 +72,7 @@ public class Java8_code_onEmployee {
            Map<String,Long> CountEachDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment , Collectors.counting()));
         System.out.println(CountEachDept);
         System.out.println("------------------------------------");
-        
+
 
         //🔹 13. Get employee names as comma-separated string
         String CommaSepartedString = employees.stream().map(Employee::getName).collect(Collectors.joining(","));
@@ -171,8 +171,49 @@ public class Java8_code_onEmployee {
         //29.Find total salary of IT department
         double totalSalaryITDept = employees.stream().filter(e -> e.getDepartment().equals("IT")).mapToDouble(Employee::getSalary).sum();
         System.out.println("total salary of IT department -> " + totalSalaryITDept);
+        System.out.println("---------------------");
 
 
+        //30.Get department with highest total salary
+        String highest_total_salary_dept = employees.stream().
+                collect(Collectors.groupingBy(Employee::getDepartment,Collectors.summingDouble(Employee::getSalary)))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+        System.out.println("highest_total_salary_dept -> " +highest_total_salary_dept);
+        System.out.println("---------------------");
+
+
+        //31. Get names of all employees with the highest salary
+            double maxSal = employees.stream().
+                    mapToDouble(Employee::getSalary)
+                    .max().orElse(0.0);
+            List<Employee> listEmp = employees.stream().filter(e -> e.getSalary() == maxSal).toList();
+
+        System.out.println(listEmp);
+        System.out.println("---------------------");
+
+        //32. Group by department then by age
+        Map<String, Map<Integer, List<Employee>>> complexGroup = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment,
+                        Collectors.groupingBy(Employee::getAge)));
+        System.out.println(complexGroup);
+        System.out.println("---------------------");
+
+
+
+     //33.Get salary statistics
+        DoubleSummaryStatistics stat = employees.stream().mapToDouble(Employee::getSalary).summaryStatistics();
+        System.out.println(stat);
+        System.out.println("---------------------");
+
+        //34.Print name and doubled salary using map
+        employees.stream().map(e -> e.getName() + " -> " + (e.getSalary() * 2) ).forEach(System.out::println);
+        System.out.println("-----------------------------");
+
+        //35.Increase all IT salaries by 5%
+        employees.stream().filter(e -> e.getDepartment().equals("IT")).map(e -> e.getSalary() * 1.05).forEach(System.out::println);
 
 
 
