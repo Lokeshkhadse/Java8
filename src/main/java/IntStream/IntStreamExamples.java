@@ -35,7 +35,7 @@ public class IntStreamExamples {
         System.out.println("------------------------------");
 
         //6.find avg or arr
-        double avg = IntStream.of(arr).mapToDouble(i -> i).average().orElse(0.0);
+        double avg = IntStream.of(arr).average().orElse(0.0);
         System.out.println("avg is -> " + avg);
         System.out.println("------------------------------");
 
