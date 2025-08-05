@@ -98,10 +98,13 @@ public class Java8DateTimeExamples {
         // ---------------------------------------------
         // 🔹 9. Get Day, Month, Year from Date
         // ---------------------------------------------
-        System.out.println("Day: " + today.getDayOfMonth());
+        System.out.println("9--Day: " + today.getDayOfMonth());
         System.out.println("Month: " + today.getMonth());
         System.out.println("Year: " + today.getYear());
         System.out.println("Day of Week: " + today.getDayOfWeek());
+        System.out.println("Day of year: " + today.getDayOfYear());
+
+
 
         // ---------------------------------------------
         // 🔹 10. Working with Time Zones
