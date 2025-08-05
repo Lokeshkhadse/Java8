@@ -66,7 +66,7 @@ public class Java8DateTimeExamples {
 
 
         // ---------------------------------------------
-        // 🔹 6. Period – Date Difference
+        // 🔹 6. Period – Date Difference (NOT use LocalTime OR LocalDateTime) USE LocalDate
         // ---------------------------------------------
         LocalDate start = LocalDate.of(2024, 1, 1);
         LocalDate end = LocalDate.of(2025, 7, 22);
@@ -76,7 +76,7 @@ public class Java8DateTimeExamples {
         System.out.println("Years: " + diff.getYears() + ", Months: " + diff.getMonths() + ", Days: " + diff.getDays());
 
         // ---------------------------------------------
-        // 🔹 7. Duration – Time Difference
+        // 🔹 7. Duration – Time Difference  (not use LocalDate) USE LocalTime or LocalDateTime
         // ---------------------------------------------
         LocalTime t1 = LocalTime.of(10, 30);
         LocalTime t2 = LocalTime.of(12, 45);
