@@ -6,6 +6,7 @@ public class MarkerTest {
 
         if(emp instanceof Marker){
             System.out.println("created marker interface");
+
             emp.display();
         }else{
             System.out.println("not marker interface");

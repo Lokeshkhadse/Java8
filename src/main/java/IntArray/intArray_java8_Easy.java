@@ -55,7 +55,7 @@ public class intArray_java8_Easy {
         System.out.println("--------------------------------------");
 
         //🔹 10. Sort array ascending
-        Arrays.stream(arr).sorted().forEach(System.out::print);
+        Arrays.stream(arr).boxed().sorted().forEach(System.out::print);
         System.out.println();
         System.out.println("--------------------------------------");
 
@@ -142,6 +142,7 @@ public class intArray_java8_Easy {
         int[] created = list1.stream().mapToInt(Integer::intValue).toArray();
         System.out.println(Arrays.toString(created));
 
+        List<Integer> lls = Arrays.stream(created).boxed().collect(Collectors.toList());
 
 
 
