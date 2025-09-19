@@ -28,9 +28,9 @@ public class Print_Subsequence_String {
         // Include current character
         list.add(arr[index]);
         subsequences(index + 1, arr, n, list);
+        list.remove(list.size() - 1);
 
         // Exclude current character
-        list.remove(list.size() - 1);
         subsequences(index + 1, arr, n, list);
     }
 

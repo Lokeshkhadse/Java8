@@ -2,7 +2,7 @@ package Recursion;
 
 public class Palindrome {
     public static void main(String[] args) {
-        String str = "racecarr";
+        String str = "racecar";
         int i =  0 , j = str.length() - 1;
         boolean val = isPalindrome(str,i,j);
         System.out.println(val);
