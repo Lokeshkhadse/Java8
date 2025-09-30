@@ -1,4 +1,4 @@
-package DP;
+package DP.FrogJump;
 
 import java.util.Arrays;
 

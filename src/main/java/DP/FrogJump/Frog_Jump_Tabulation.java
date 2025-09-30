@@ -1,6 +1,4 @@
-package DP;
-
-import java.util.Arrays;
+package DP.FrogJump;
 
 public class Frog_Jump_Tabulation {
 //    public static void main(String[] args) {

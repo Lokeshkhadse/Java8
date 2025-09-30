@@ -1,4 +1,4 @@
-package DP;
+package DP.FrogJump;
 
 public class FrogJumpKDistance {
     public static void main(String[] args) {
