@@ -125,7 +125,7 @@ public class List_Easy_Java8 {
         System.out.println("second Highest No is -> " + secondHighestNo);
 
         //22. find second Lowest number
-        int secondLowestNumber = number.stream().mapToInt(Integer::intValue).sorted().skip(1).findFirst().orElse(-1);
+        int secondLowestNumber = number.stream().sorted().skip(1).findFirst().orElse(-1);
         System.out.println("secondLowestNumber is -> " + secondLowestNumber);
 
 
@@ -154,6 +154,14 @@ public class List_Easy_Java8 {
         long count1 = numbers.stream().mapToInt(Integer::intValue).count();
         System.out.println("Count: " + count1);
 
+
+        //palindrome
+        List<String> list3 = Arrays.asList("madam", "apple", "level", "cat");
+        List<String> result3 = list3.stream()
+                .filter(x -> x.equals(new StringBuilder(x).reverse().toString()))
+                .collect(Collectors.toList());
+
+        System.out.println(result3);
 
 
 
