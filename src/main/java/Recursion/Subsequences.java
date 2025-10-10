@@ -3,7 +3,7 @@ package Recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Subsequences {
+public class Subsequences {  //[1,2] [2,1] are different
     public static void main(String[] args) {
         int[] arr = {3,1,2};
         int n = 3;
