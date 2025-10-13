@@ -49,6 +49,18 @@ public class intArray_java8_Medium {
         //7.Find number with minimum frequency
         int minimumFreq = Arrays.stream(arr).boxed().collect(Collectors.groupingBy(Function.identity(),Collectors.counting())).entrySet().stream().
                           min(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse(-1);
+
+        //or
+
+
+//     int minFreq = Arrays.stream(nums)
+//             .boxed()
+//             .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+//             .entrySet().stream()
+//             .sorted(Map.Entry.comparingByValue())
+//             .map(Map.Entry::getKey)
+//             .findFirst()
+//             .orElse(-1);
         System.out.println("number with minimum frequency -> " + minimumFreq);
         System.out.println("--------------------");
 
