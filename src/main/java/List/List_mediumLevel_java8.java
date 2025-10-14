@@ -57,6 +57,12 @@ public class List_mediumLevel_java8 {
         List<String> list = Arrays.asList("Rahul", "Ankita1", "Ajay");
         boolean checkDigitContains = list.stream().anyMatch(s -> s.matches(".*\\d.*"));
         System.out.println(checkDigitContains);
+
+        //or
+
+        boolean hasDigit = list.stream()
+                .anyMatch(s -> s.chars().anyMatch(Character::isDigit));
+        System.out.println("Way 2 -> " + hasDigit);
         System.out.println("------------------------------------------");
 
         //10.ANAGARAM

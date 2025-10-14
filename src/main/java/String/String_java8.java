@@ -80,6 +80,10 @@ public class String_java8 {
         String finalString = replace.chars()
                 .mapToObj(c -> "aeiouAEIOU".indexOf(c) != -1 ? "*" : String.valueOf((char) c))
                 .collect(Collectors.joining());
+
+        //or
+        String finalString1 = replace.replaceAll("[aeiouAEIOU]","*");
+
         System.out.println("repalce all vowels with * -> " + finalString);
         System.out.println("-----------------------");
 
@@ -90,6 +94,9 @@ public class String_java8 {
                 .mapToObj(c -> String.valueOf((char) c)).collect(Collectors.joining());
         System.out.println("after Remove all digits from a string -> " + removeAllDigit);
         System.out.println("-----------------------");
+
+        //or
+        String result = digit.replaceAll("[0-9]", "");
 
 
 
