@@ -21,6 +21,7 @@ public class Frog_Jump_Tabulation {
 //       System.out.println(dp[n-1]);
 //    }
 
+    
     //one more approach
 
     public static void main(String[] args) {
