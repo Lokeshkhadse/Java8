@@ -144,6 +144,12 @@ public class intArray_java8_Easy {
 
         List<Integer> lls = Arrays.stream(created).boxed().collect(Collectors.toList());
 
+        //27 reverse int value
+         int val = 123;
+         int reversed = Integer.parseInt(new StringBuilder(String.valueOf(val)).reverse().toString());
+
+        System.out.println(reversed);
+
 
 
 
