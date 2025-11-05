@@ -34,7 +34,6 @@ public class Memo_Longest_Common_Subsequnces {
         }
 
         //not match and max return
-        return dp[index1][index2] = 0 + Math.max(formSubsequence(s1,s2,index1-1,index2,dp),
-                                        formSubsequence(s1,s2,index1,index2-1,dp));
+        return dp[index1][index2] = 0 + Math.max(formSubsequence(s1,s2,index1-1,index2,dp),formSubsequence(s1,s2,index1,index2-1,dp));
     }
 }
