@@ -20,6 +20,8 @@ public class Rec_Longest_Common_Substring {
                 if(s2.contains(sub)){
                     int length= sub.length();
                     max = Math.max(max,length);
+                }else{
+                    break;
                 }
             }
         }
