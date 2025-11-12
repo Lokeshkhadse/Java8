@@ -30,11 +30,11 @@ public class Permutation {
 
         for (int i = 0; i < nums.length; i++) {
             if (index[i] == false) {
-                list.add(nums[i]);
+                list.add(nums[i]);   //take
                 index[i] = true;
-                finaPermutation(nums, ans, list, index);
+                finaPermutation(nums, ans, list, index); //explore it
 
-                list.remove((list.size() - 1));
+                list.remove((list.size() - 1)); // (backtrack step)
                 index[i] = false;
             }
         }

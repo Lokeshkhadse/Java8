@@ -6,7 +6,7 @@ public class Tab_Print_Shortest_Common_Supersequence {
         String s2 = "groot";
 
         String ans    =  shortestSupersequence(s1,s2);
-        
+
         System.out.println("Shortest_Common_Supersequence is -->" + ans);
 
     }
