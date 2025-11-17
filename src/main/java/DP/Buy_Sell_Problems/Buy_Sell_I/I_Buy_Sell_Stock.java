@@ -1,4 +1,4 @@
-package DP.Buy_Sell_Problems;
+package DP.Buy_Sell_Problems.Buy_Sell_I;
 
 public class I_Buy_Sell_Stock {
     public static void main(String[] args) {
