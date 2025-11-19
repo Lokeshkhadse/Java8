@@ -44,7 +44,7 @@ public class Largest_Divisible_Subset {
 
     public static boolean isDivided(List<Integer> list) {
 
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size()-1; i++) {
             for (int j = i + 1; j < list.size(); j++) {
 
                 int a = list.get(i);
