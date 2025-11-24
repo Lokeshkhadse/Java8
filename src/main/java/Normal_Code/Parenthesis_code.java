@@ -6,6 +6,7 @@ public class Parenthesis_code {
     public static void main(String[] args) {
         String s = "()[]{}";
         boolean ans = isValid(s);
+        System.out.println(ans);
     }
     public static boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
