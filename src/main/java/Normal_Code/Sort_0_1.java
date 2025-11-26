@@ -3,6 +3,7 @@ package Normal_Code;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class Sort_0_1 {
     public static void main(String[] args) {
@@ -20,5 +21,16 @@ public class Sort_0_1 {
                 .toArray();
 
         System.out.println(Arrays.toString(abc));
+
+
+
+        List<Integer> list = Arrays.asList(1,0,1,0,0,0,1);
+
+        List<Integer> oneFirst = list.stream().sorted(Comparator.reverseOrder()).toList();
+        List<Integer> zeroFirst = list.stream().sorted().toList();
+
+        System.out.println(oneFirst);
+        System.out.println(zeroFirst);
+
     }
 }
