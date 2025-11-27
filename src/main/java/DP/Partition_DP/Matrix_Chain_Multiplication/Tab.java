@@ -1,4 +1,4 @@
-package DP.Matrix_Chain_Multiplication;
+package DP.Partition_DP.Matrix_Chain_Multiplication;
 
 public class Tab { //FIND MINIMAL MULTIPLICATION OPERATION
     public static void main(String[] args) {
