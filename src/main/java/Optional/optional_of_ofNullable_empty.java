@@ -29,6 +29,7 @@ public class optional_of_ofNullable_empty {
         System.out.println(abc1.isPresent()); //true
 
         Optional<String>abc2 = Optional.ofNullable(null);
+        System.out.println(abc2.get()); //exception
         System.out.println(abc2.orElse("default"));   //default
         System.out.println(abc2); //Optional.empty
         System.out.println(abc2.isEmpty());  //true

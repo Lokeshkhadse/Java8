@@ -60,6 +60,7 @@ public class Java8_code_onEmployee {
 
         //10.🔹  Partition employees by age > 30
         Map<Boolean,List<Employee>> EmpAgeGreaterThan30 = employees.stream().collect(Collectors.groupingBy( e -> e.getAge()>30));
+        Map<Boolean,List<Employee>> EmpAgeGreaterThan30Test = employees.stream().collect(Collectors.partitioningBy( e -> e.getAge()>30));
         System.out.println(EmpAgeGreaterThan30);
         System.out.println("--------------------------------");
 
