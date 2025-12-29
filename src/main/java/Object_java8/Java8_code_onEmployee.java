@@ -249,6 +249,9 @@ public class Java8_code_onEmployee {
                 .orElse(0);
         System.out.println(mostRepeatedAge);
 
+        //40 convert name into uppercase
+        employees.stream().map(Employee::getName).map(name -> name.toUpperCase()).forEach(System.out::println);
+
 
 
 

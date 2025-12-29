@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Subsequences {  //[1,2] [2,1] are different
     public static void main(String[] args) {
-        int[] arr = {3,1,2};
-        int n = 3;
+        int[] arr = {3,1,2,4};
+        int n = 4;
         List<Integer> list = new ArrayList<>();
         int index = 0 ;
         formSubsequnece(index,arr,n,list);
