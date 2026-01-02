@@ -1,0 +1,6 @@
+🧠 One-Line Memory Trick (Very Important)
+Problem  	Direction	Pop Condition
+PSE	      Left → Right   	>=
+NSE	      Right → Left	    >=
+PGE       Left → Right	    <=
+NGE       Right → Left	    <=
