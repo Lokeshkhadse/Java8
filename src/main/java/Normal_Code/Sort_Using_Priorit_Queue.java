@@ -18,7 +18,7 @@ public class Sort_Using_Priorit_Queue {
 
 //        👉 Queue will never be empty
 //        👉 No NullPointerException at runtime
-        
+
         for(int i = 0 ;i<n;i++){
             if(!priorityQueue.isEmpty()){
                 newArr[i] = priorityQueue.poll();

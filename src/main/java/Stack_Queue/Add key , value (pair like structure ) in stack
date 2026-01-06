@@ -1,0 +1,43 @@
+import java.util.Stack;
+
+public class StackKeyValue {
+    public static void main(String[] args) {
+
+        Stack<int[]> stack = new Stack<>();
+
+        stack.push(new int[]{5, 3}); // {value, index}
+        stack.push(new int[]{7, 4});
+
+        int[] top = stack.peek();
+        System.out.println(top[0] + " " + top[1]);
+    }
+}
+
+
+
+OR
+
+import java.util.Stack;
+
+class Pair {
+    int key;
+    String value;
+
+    Pair(int key, String value) {
+        this.key = key;
+        this.value = value;
+    }
+}
+
+public class StackKeyValue {
+    public static void main(String[] args) {
+
+        Stack<Pair> stack = new Stack<>();
+
+        stack.push(new Pair(10, "Apple"));
+        stack.push(new Pair(20, "Banana"));
+
+        Pair top = stack.peek();
+        System.out.println(top.key + " " + top.value);
+    }
+}
