@@ -63,7 +63,7 @@ public class Pre_In_Post_Using_threeList_oneStack {
             }
         }
 
-        
+
         System.out.println("Preorder  : " + pre);
         System.out.println("Inorder   : " + in);
         System.out.println("Postorder : " + post);
