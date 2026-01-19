@@ -13,6 +13,7 @@ public class Balanced_Binary_Tree {
             this.data = data;
         }
     }
+    
     public static boolean isBinaryTree(Node root){
         return CheckHeight(root) != -1;
     }
