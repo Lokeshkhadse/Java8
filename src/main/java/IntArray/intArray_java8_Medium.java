@@ -29,7 +29,7 @@ public class intArray_java8_Medium {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
                 .stream()
-                .sorted(Map.Entry.<Integer, Long>comparingByValue().reversed())  //or .max(Map.Entry.comparingByValue())
+                .sorted(Map.Entry.<Integer, Long>comparingByValue().reversed())  //or .max(Map.Entry.comparingByValue()) // or filter(e -> e.getValue()>1)
                 .map(Map.Entry::getKey)
                 .findFirst()
                 .orElse(-1);

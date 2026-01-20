@@ -192,7 +192,10 @@ public class Java8_code_onEmployee {
                     .max().orElse(0.0);
             List<Employee> listEmp = employees.stream().filter(e -> e.getSalary() == maxSal).toList();
 
+        double maxsal1 = employees.stream().map(Employee::getSalary).sorted(Comparator.reverseOrder()).findFirst().orElse(0.0);
+        List<Employee> listEmp1 = employees.stream().filter(e -> e.getSalary() == maxsal1).toList();
         System.out.println(listEmp);
+        System.out.println("maxsal1 is -> " +maxsal1);
         System.out.println("---------------------");
 
         //32. Group by department then by age
@@ -251,6 +254,7 @@ public class Java8_code_onEmployee {
 
         //40 convert name into uppercase
         employees.stream().map(Employee::getName).map(name -> name.toUpperCase()).forEach(System.out::println);
+        employees.stream().map(e -> e.getName().toUpperCase()).forEach(System.out::println);
 
 
 
