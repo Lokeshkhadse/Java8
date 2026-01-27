@@ -38,7 +38,7 @@ public class ZigzagTraversal {
             }
 
             // reverse if needed
-            if (!leftToRight) {
+                if (!leftToRight) {
                 Collections.reverse(row);
             }
 
