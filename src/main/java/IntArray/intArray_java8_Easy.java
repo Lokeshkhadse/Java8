@@ -151,6 +151,22 @@ public class intArray_java8_Easy {
         System.out.println(reversed);
 
 
+        // 28 nullsFirst and nullsLast work only with objects,
+        // not primitives, because primitives like int cannot store null."
+        Integer demo[] = {1,null,2,null,3};
+        Integer[] ans = Arrays.stream(demo).
+                        sorted(Comparator.nullsFirst(Comparator.naturalOrder())).
+                       toArray(Integer[]::new);
+        System.out.println("NUlls first ->" + Arrays.toString(ans));
+
+        //29 nullsLast
+        Integer[] ans1 = Arrays.stream(demo).
+                sorted(Comparator.nullsLast(Comparator.reverseOrder())).
+                toArray(Integer[]::new);
+        System.out.println("NUlls last ->" + Arrays.toString(ans1));
+
+
+
 
 
 

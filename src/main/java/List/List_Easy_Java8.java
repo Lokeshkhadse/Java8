@@ -164,9 +164,16 @@ public class List_Easy_Java8 {
         System.out.println(result3);
 
 
+       //nullsFirst & nullsLast
+        List<Integer> listtry = Arrays.asList(3, null, 1, null, 2);
 
+        listtry.stream()
+                .sorted(Comparator.nullsFirst(Comparator.naturalOrder()))
+                .forEach(System.out::println);
 
-
+        listtry.stream()
+                .sorted(Comparator.nullsLast(Comparator.naturalOrder()))
+                .forEach(System.out::println);
 
 
 
