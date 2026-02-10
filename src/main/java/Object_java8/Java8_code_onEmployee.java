@@ -149,6 +149,7 @@ public class Java8_code_onEmployee {
 
 
         //25.Average salary by department
+
         Map<String, Double>avgSalaryByDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.averagingDouble(Employee::getSalary)));
         System.out.println("Average salary by department->" + avgSalaryByDept);
         System.out.println("------------------------------------");
