@@ -257,12 +257,51 @@ public class Java8_code_onEmployee {
         employees.stream().map(Employee::getName).map(name -> name.toUpperCase()).forEach(System.out::println);
         employees.stream().map(e -> e.getName().toUpperCase()).forEach(System.out::println);
 
+        //41. Dept wise 2nd highest salary
+        Map<String,Optional<Double>> dept2ndHighest = employees.stream().
+                    collect(Collectors.groupingBy(Employee::getDepartment,
+                            Collectors.collectingAndThen(Collectors.toList(), list -> list.stream()
+                                    .map(Employee::getSalary)
+                                    .sorted(Comparator.reverseOrder())
+                                    .skip(1)
+                                    .findFirst()
+                            )
+                    ));
 
 
+        System.out.println(" dept wise 2nd highest salary ->" + dept2ndHighest);
+
+        //41. Dept wise 2nd lowest salary
+        Map<String,Optional<Double>> dept2ndLowest = employees.stream().
+                collect(Collectors.groupingBy(Employee::getDepartment,
+                        Collectors.collectingAndThen(Collectors.toList(), list -> list.stream()
+                                .map(Employee::getSalary)
+                                .sorted()
+                                .skip(1)
+                                .findFirst()
+                        )
+                ));
 
 
+        System.out.println(" dept wise 2nd Lowest salary ->" + dept2ndLowest);
+
+        //42 .Get max salary employee name
+        String name = employees.stream().
+                collect(Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary)),l -> l.get().getName()));
+        System.out.println("max salary employee name -> " + name);
 
 
+       // Find count of employees in each department but return result as Integer instead of Long.
+        Map<String, Integer> deptCnt =
+                employees.stream()
+                        .collect(Collectors.groupingBy(
+                                Employee::getDepartment,
+                                Collectors.collectingAndThen(
+                                        Collectors.counting(),
+                                        Long::intValue
+                                )
+                        ));
+        System.out.println("dept-Count ->" + deptCnt);
 
 
 
