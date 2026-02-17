@@ -291,7 +291,7 @@ public class Java8_code_onEmployee {
         System.out.println("max salary employee name -> " + name);
 
 
-       // Find count of employees in each department but return result as Integer instead of Long.
+       //43 Find count of employees in each department but return result as Integer instead of Long.
         Map<String, Integer> deptCnt =
                 employees.stream()
                         .collect(Collectors.groupingBy(
@@ -302,6 +302,11 @@ public class Java8_code_onEmployee {
                                 )
                         ));
         System.out.println("dept-Count ->" + deptCnt);
+
+
+         //44 find first employee
+        Employee firstEmp = employees.stream().findFirst().orElse(null);
+        System.out.println("first emp is ->" + firstEmp);
 
 
 
