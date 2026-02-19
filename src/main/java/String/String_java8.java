@@ -1,6 +1,7 @@
 package String;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class String_java8 {
@@ -98,6 +99,11 @@ public class String_java8 {
         //or
         String result = digit.replaceAll("[0-9]", "");
 
+        // find count of each char and return first char whose cnt is more than 1
+        String z = "abcabcABc";
+        Map<Character,Long> map= z.chars().mapToObj(c -> (char)c).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting()));
+        char zz = map.entrySet().stream().filter(e -> e.getValue() > 1).map(Map.Entry::getKey).findFirst().orElse('0');
+        System.out.println("first character comes multiple time is -> " + zz);
 
 
 

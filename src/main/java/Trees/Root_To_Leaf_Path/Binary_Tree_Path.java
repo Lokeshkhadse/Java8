@@ -1,4 +1,4 @@
-package Trees.Binary_Tree_Path;
+package Trees.Root_To_Leaf_Path;
 
 import java.util.*;
 
@@ -37,21 +37,16 @@ public class Binary_Tree_Path {
 
     public static void main(String[] args) {
 
-        /*
-                1
-               / \
-              2   3
-               \
-                5
-        */
+
 
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
         root.left.right = new TreeNode(5);
 
         List<String> paths = binaryTreePaths(root);
 
         System.out.println(paths);
     }
-}                                                               
+}
