@@ -32,7 +32,7 @@ public class Another_Approach {
 
         if(root == null) return;
 
-        int child = 0;    //up to down approach 
+        int child = 0;    //up to down approach
 
         if(root.left != null)
             child += root.left.data;
