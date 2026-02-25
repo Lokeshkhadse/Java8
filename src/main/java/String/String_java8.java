@@ -105,6 +105,11 @@ public class String_java8 {
         char zz = map.entrySet().stream().filter(e -> e.getValue() > 1).map(Map.Entry::getKey).findFirst().orElse('0');
         System.out.println("first character comes multiple time is -> " + zz);
 
+        //remove speical character , whitesapce and number
+        String m = "Hii m8y; Name is loki";
+        String finans = m.chars().map(Character::toLowerCase).filter(Character::isLetter).mapToObj(ch4 -> String.valueOf((char)ch4)).collect(Collectors.joining());
+        System.out.println(finans);
+
 
 
 

@@ -19,3 +19,7 @@ public class Palindrome {
        return false;
     }
 }
+
+//or
+// String rev = new StringBuilder(str).reverse().toString();
+//boolean ans = str().equals(rev);
