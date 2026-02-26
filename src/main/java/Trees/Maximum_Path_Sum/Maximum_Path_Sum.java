@@ -36,6 +36,7 @@ public class Maximum_Path_Sum {
         root.right = new Node(20);
         root.right.left = new Node(15);
         root.right.right = new Node(7);
+        root.left.left = new Node(200);
 
         int sum = findMaximumPathSum(root);
         System.out.println("Maximum path sum is  = " + sum);

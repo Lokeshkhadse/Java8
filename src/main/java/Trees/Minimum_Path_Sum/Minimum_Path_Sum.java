@@ -20,8 +20,9 @@ public class Minimum_Path_Sum {
     public static int find(Node root) {
         if (root == null) return 0;
 
-        int leftGain = find(root.left);
-        int rightGain = find(root.right);
+        // Only take negative contributions
+        int leftGain = Math.min(0, find(root.left));
+        int rightGain = Math.min(0, find(root.right));
 
         int currentPathSum = leftGain + rightGain + root.data;
 

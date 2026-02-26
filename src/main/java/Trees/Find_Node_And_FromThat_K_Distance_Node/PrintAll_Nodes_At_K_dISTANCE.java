@@ -117,3 +117,43 @@ public class PrintAll_Nodes_At_K_dISTANCE {
             System.out.print(val + " ");
     }
 }
+
+//ANOTER APPROACH
+//
+//public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+//    Map<TreeNode, TreeNode> parent_track = new HashMap<>();
+//    markParents(root, parent_track, root);
+//    Map<TreeNode, Boolean> visited = new HashMap<>();
+//    Queue <TreeNode> q = new LinkedList<>();
+//    q.offer(target);
+//    visited.put(target, true);
+//    int cnt = 0;
+//    while(!q.isEmpty()){
+//        int size = q.size();
+//        if(cnt == k) break;
+//        cnt++;
+//        for(int i = 0; i < size; i++){
+//            TreeNode curr = q.poll();
+//            if(curr.left != null && visited.get(curr.left) == null){
+//                q.offer(curr.left);
+//                visited.put(curr.left, true);
+//            }
+//            if(curr.right != null && visited.get(curr.right) == null){
+//                q.offer(curr.right);
+//                visited.put(curr.right, true);
+//            }
+//            if(parent_track.get(curr) != null && visited.get(parent_track.get(curr)) == null){
+//                q.offer(parent_track.get(curr));
+//                visited.put(parent_track.get(curr), true);
+//            }
+//        }
+//    }
+//    List<Integer> ans = new ArrayList<>();
+//    while(!q.isEmpty()){
+//        TreeNode curr = q.poll();
+//        ans.add(curr.val);
+//    }
+//    return ans;
+//}
+
+
