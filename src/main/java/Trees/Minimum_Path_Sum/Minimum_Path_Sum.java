@@ -38,6 +38,7 @@ public class Minimum_Path_Sum {
         root.right = new Node(20);
         root.right.left = new Node(15);
         root.right.right = new Node(7);
+//        root.right.right.right = new Node(-300);
 
 
         int sum = findMinimumPathSum(root);
