@@ -3,7 +3,7 @@ package Normal_Code;
 import java.util.Arrays;
 
 public class Rotate_Array_II {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         int arr[] = {1,2,3,4,5,6,7};
         int k = 3;
         int n = arr.length;

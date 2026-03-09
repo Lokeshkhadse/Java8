@@ -3,6 +3,7 @@ package Trees.BST;
 //L < N < R
 //LEFT SUBTREE < ROOT.VAL < RIGHT SUBTREE
 
+
 public class Validate_BST {
     static class TreeNode {
         int val;

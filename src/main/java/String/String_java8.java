@@ -110,6 +110,26 @@ public class String_java8 {
         String finans = m.chars().map(Character::toLowerCase).filter(Character::isLetter).mapToObj(ch4 -> String.valueOf((char)ch4)).collect(Collectors.joining());
         System.out.println(finans);
 
+        String test = "abcbd";
+        boolean ans = test.chars().mapToObj(c -> (char)c).allMatch(ch22 -> Character.isAlphabetic(ch22));
+        System.out.println(ans);
+
+        //reverse sentence
+        String ax = "hii lokii how are you";
+         List<String> anc = Arrays.asList(ax.split(" "));
+         Collections.reverse(anc);
+        System.out.println(anc);
+
+        String mm = Arrays.stream(ax.split(" "))
+                .collect(Collectors.collectingAndThen(
+                        Collectors.toList(),
+                        list -> {
+                            Collections.reverse(list);
+                            return String.join(" ", list);
+                        }));
+
+        System.out.println(mm);
+
 
 
 
