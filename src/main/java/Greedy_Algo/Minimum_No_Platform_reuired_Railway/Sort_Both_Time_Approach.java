@@ -10,7 +10,7 @@ public class Sort_Both_Time_Approach {
         int dep[] = {1200, 1240, 1130};
 
         // 🔹 Step 1: Sort both array
-        
+
         Arrays.sort(arr);
         Arrays.sort(dep);
 
