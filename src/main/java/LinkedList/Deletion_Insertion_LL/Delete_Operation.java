@@ -70,7 +70,11 @@ public class Delete_Operation {
 
             cnt ++;
             if(cnt == k){
-                prev.next = prev.next.next;
+                // SAFE deletion
+                if(prev != null && prev.next != null){
+                    prev.next = prev.next.next;
+                }
+              //  prev.next = prev.next.next;     or direct instead of if
                 return head;
 
             }
@@ -92,12 +96,17 @@ public class Delete_Operation {
 
         while(temp != null){
             if(temp.data == val){
-                prev.next = prev.next.next;
+                // SAFE deletion
+                if(prev != null && prev.next != null){
+                    prev.next = prev.next.next;
+                }
+                //  prev.next = prev.next.next;     or direct instead of if
                 return head;
             }
             prev = temp;
             temp = temp.next;
         }
+        // value not found → no change
         return head;
     }
 

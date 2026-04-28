@@ -59,9 +59,10 @@ public class Insertion_Operation {
     public static  Node Insert_At_Kth_position(Node head, int data, int k) {
         Node insertAtKPosition = new Node(data);
         Node temp = head;
+
         if(k == 1){
             head = insertAtKPosition;
-            insertAtKPosition.next = temp;
+            head.next = temp;
             return head;
         }
         int cnt = 0 ;
@@ -77,39 +78,45 @@ public class Insertion_Operation {
             prev = temp;
             temp = temp.next;
         }
+
+        // Insert at end
+        if(cnt + 1 == k){
+            prev.next = insertAtKPosition;
+        }
+
         return head;
 
     }
 
     //Insert Node Before x(Node) value
     public static Node Insert_Node_Before_x_Node_value(Node head, int newvalue, int x) {
-        // Case 1: Empty list
-        if (head == null) return new Node(newvalue);
+        // head is null
+        if(head == null) return new Node(newvalue);
 
-        // Case 2: Insert before head
-        if (head.data == x) {
+        //if x value is head value so add before head
+        if(head.data == x){
             Node newNode = new Node(newvalue);
             newNode.next = head;
             return newNode;
         }
 
         Node temp = head;
-        Node prev = null;
+        Node prev= null;
 
-        // Traverse list
-        while (temp != null && temp.data != x) {
+        // find x value till traverse
+        while(temp != null && temp.data != x){
             prev = temp;
             temp = temp.next;
         }
 
-        // If x is found
-        if (temp != null) {
-            Node newNode = new Node(newvalue);
-            prev.next = newNode;
-            newNode.next = temp;
+        // if x found
+        if(temp != null && temp.data == x){
+            Node node = new Node(newvalue);
+            prev.next = node;
+            node.next = temp;
         }
 
-        return head;
+       return head;
     }
 
     // Display
@@ -146,11 +153,20 @@ public class Insertion_Operation {
         Node Insert_At_Kth_position = Insertion_Operation.Insert_At_Kth_position(head,10,5);
         display(Insert_At_Kth_position);
 
+        //insert At K-th Position (tail)
+        Node Insert_At_Kth_position8 = Insertion_Operation.Insert_At_Kth_position(head,100,8);
+        display(Insert_At_Kth_position8);
+
+
         //insert Node Before x(Node) value
         int x = 3;
         int newvalue = 15;
         Node Insert_Node_Before_x_Node_value = Insertion_Operation.Insert_Node_Before_x_Node_value(head,newvalue,x);
         display(Insert_Node_Before_x_Node_value);
+
+        //insert node before v(node ) value so my x value is currently head value
+        Node Insert_Node_Before_x_Node_value1 = Insertion_Operation.Insert_Node_Before_x_Node_value(head,20,5);
+        display(Insert_Node_Before_x_Node_value1);
 
 
 
