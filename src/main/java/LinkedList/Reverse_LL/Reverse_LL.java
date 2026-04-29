@@ -34,7 +34,7 @@ public class Reverse_LL {
             prev = curr;
             curr = next;
         }
-        
+
         return prev;
     }
 
