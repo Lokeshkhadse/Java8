@@ -15,7 +15,30 @@ public class Reverse_LL {
         }
     }
 
-    // Reverse using List (your approach)
+    //reverse o(1) approch
+    public static ListNode reverseLL(ListNode head){
+        if(head == null ){
+            return null;
+        }
+        if(head.next == null){
+            return head;
+        }
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while(curr != null){
+            ListNode next = curr.next;
+            curr.next = prev;
+
+            //update Node
+            prev = curr;
+            curr = next;
+        }
+        
+        return prev;
+    }
+
+    // Reverse using List (your approach) o(n)
     public static ListNode reverseList(ListNode head) {
 
         ListNode temp = head;
@@ -95,5 +118,17 @@ public class Reverse_LL {
 
         System.out.print("Reversed: ");
         display(head);
+
+
+        //reverseLL
+        ListNode head2 = null;
+        head2 = insert(head2, 1);
+        head2 = insert(head2, 2);
+        head2 = insert(head2, 3);
+        head2 = insert(head2, 4);
+
+        head2 = reverseLL(head2);
+        System.out.print("o(1) approach :");
+        display(head2);
     }
 }
