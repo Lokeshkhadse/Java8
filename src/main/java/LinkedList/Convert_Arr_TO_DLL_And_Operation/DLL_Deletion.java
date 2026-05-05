@@ -1,7 +1,7 @@
 package LinkedList.Convert_Arr_TO_DLL_And_Operation;
 
 
-public class DLL {
+public class DLL_Deletion {
     static class Node {
         int data;
         Node next;
