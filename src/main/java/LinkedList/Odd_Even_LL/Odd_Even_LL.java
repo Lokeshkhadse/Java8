@@ -1,5 +1,7 @@
 package LinkedList.Odd_Even_LL;
 
+import LinkedList.Convert_Arr_To_LL.Convert_Display_Length_Search;
+
 public class Odd_Even_LL {
 
     static class ListNode {
@@ -75,6 +77,67 @@ public class Odd_Even_LL {
         return dummy.next;
     }
 
+    //3rd approach using external arr
+    public static ListNode ThirdApproach(ListNode head) {
+
+        if (head == null) return null;
+        int len = size(head);
+        int arr[] = new int[len];
+        int i = 0 ;
+
+        ListNode temp = head;
+
+        //0dd approach
+        while(temp != null && temp.next != null){
+            arr[i] = temp.val;
+            i++;
+            temp = temp.next.next;
+
+        }
+        //last node if odd
+        if(temp != null){
+            arr[i] = temp.val;
+            i++;
+        }
+
+        //even approcha
+        temp = head.next;
+        while(temp != null && temp.next != null){
+            arr[i] = temp.val;
+            i++;
+            temp = temp.next.next;
+
+        }
+
+        //last node if even
+        if(temp != null){
+            arr[i] = temp.val;
+            i++;
+        }
+
+        temp = head;
+        i = 0;
+        while(temp != null){
+            temp.val = arr[i];
+            i++;
+            temp = temp.next;
+
+        }
+        return head;
+
+    }
+
+    //length
+    public static int size(ListNode head){
+        int cnt = 0 ;
+        ListNode temp = head;
+
+        while(temp!= null){
+            cnt++;
+            temp = temp.next;
+        }
+        return cnt;
+    }
 
     public static void print(ListNode head) {
         while (head != null) {
@@ -115,5 +178,8 @@ public class Odd_Even_LL {
 
         System.out.println("\nNew List Approach:");
         print(oddEvenNewList(head2));
+
+        System.out.println("\nThird new arr Approach:");
+        print(ThirdApproach(head2));
     }
 }
