@@ -80,7 +80,7 @@ public class Add_One_Number_LL {
                  break;
              }else {
                  temp.data = 0 ;
-                 carry = 0;
+                 carry = 1;
              }
              temp = temp .next;
          }
