@@ -29,7 +29,7 @@ public class Delete_All_Occur_Of_X {
 
         List<Integer> list = new ArrayList<>();
 
-      
+
         while (temp != null) {
 
             if (temp.data != x) {
@@ -68,6 +68,30 @@ public class Delete_All_Occur_Of_X {
         return head;
     }
 
+    //Approach2
+    //prev curr next
+    public static Node Approach2(Node head, int x){
+        Node temp = head;
+        while(temp != null){
+            if(temp.data == x){
+                if(temp == head){
+                    head = head.next;
+                }
+                Node nextnode = temp.next;
+                Node prevnode = temp.prev;
+
+                if(nextnode != null) nextnode.prev = prevnode;
+                if(prevnode != null) prevnode.next = nextnode;
+
+                temp = nextnode;
+            }else{
+                temp = temp.next;
+            }
+
+        }
+        return head;
+
+    }
 
     public static void display(Node head) {
 
@@ -117,7 +141,8 @@ public class Delete_All_Occur_Of_X {
         System.out.println("Original DLL:");
         display(head);
 
-        head = deleteAllOccurOfX(head, x);
+       // head = deleteAllOccurOfX(head, x);
+        head = Approach2(head, x);
 
         System.out.println("\n\nAfter Deleting " + x + ":");
         display(head);
