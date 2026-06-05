@@ -1,4 +1,4 @@
-package BinarySearch;
+package BinarySearch.LowerUpperBound;
 
 public class Lower_Upper_Bound {
     public static void main(String[] args) {
@@ -33,16 +33,16 @@ public class Lower_Upper_Bound {
     }
 
     //Upper bound
-    public static int upper_bound(int[] arr,int target, int low , int high,int ans) {
-        if (low > high) {
+    public static int upper_bound(int[] arr,int target, int low , int high,int ans){
+        if(low > high) {
             return ans;
         }
-        int mid = low + (high - low) / 2;
+        int mid = low + (high - low) /2;
 
-        if (arr[mid] > target) {
+        if(arr[mid] > target){
             ans = mid;
-            return upper_bound(arr, target, low, mid - 1, ans);
+          return upper_bound(arr,target,low,mid-1,ans);
         }
-        return upper_bound(arr, target, mid + 1, high, ans);
-    }
+        return upper_bound(arr,target,mid+1,high,ans);
+        }
 }
