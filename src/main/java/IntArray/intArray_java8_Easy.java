@@ -1,7 +1,13 @@
 package IntArray;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+// 2 type in stream is Intermediate ( that is use for perform operation on element)
+//                     Terminal ( to collect data)
+
+//boxed -> is used to convert intstream to stream object
+// mpa to object -> is used to convert primitive type to object or stream<Object>
 
 public class intArray_java8_Easy {
     public static void main(String[] args) {
@@ -164,6 +170,7 @@ public class intArray_java8_Easy {
                 sorted(Comparator.nullsLast(Comparator.reverseOrder())).
                 toArray(Integer[]::new);
         System.out.println("NUlls last ->" + Arrays.toString(ans1));
+
 
 
 

@@ -1,6 +1,7 @@
 package Normal_Code;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Rotate_Array {
     public static void main(String[] args) {
@@ -40,3 +41,8 @@ public class Rotate_Array {
         System.out.println(Arrays.toString(finalarr));
     }
 }
+
+//int[] rotateArrAns = IntStream.concat(
+//        Arrays.stream(arr).skip(n-k),   //[4,5]
+//        Arrays.stream(arr).limit(n-k)  //[1,2,3]
+//).toArray();

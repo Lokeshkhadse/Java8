@@ -7,7 +7,7 @@ public class intArray_java8_Hard {
         int[] arr = {2, 4, 6, 1, 9, 3, 7};
 
         //1.Sliding window of size 3 and average
-        IntStream.range(0,arr.length-2).mapToDouble(i  -> arr[i] + arr[i+1] + arr[i+2] / 3.0).forEach(System.out::println);
+        IntStream.range(0,arr.length-2).mapToDouble(i  -> (arr[i] + arr[i+1] + arr[i+2])/ 3.0).forEach(System.out::println);
         System.out.println("--------------------------------");
 
         //2. Find all subarrays with sum 0
