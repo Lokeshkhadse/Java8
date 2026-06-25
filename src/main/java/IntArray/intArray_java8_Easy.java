@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 //                     Terminal ( to collect data)
 
 //boxed -> is used to convert intstream to stream object
-// mpa to object -> is used to convert primitive type to object or stream<Object>
+// map to object -> is used to convert primitive type to object or stream<Object>
 
 public class intArray_java8_Easy {
     public static void main(String[] args) {

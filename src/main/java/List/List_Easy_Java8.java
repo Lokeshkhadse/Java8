@@ -86,6 +86,9 @@ public class List_Easy_Java8 {
         List<String> list2 = Arrays.asList("Python", "C", "Go");
 
         List<String> common = list1.stream().filter(s -> list2.contains(s)).collect(Collectors.toList());
+        list1.stream()
+                .filter(b -> list2.stream().anyMatch(c -> b.equals(c)))
+                .forEach(System.out::println);
         System.out.println(" common element is -> " + common);
         System.out.println("---------------------------------- > ");
 
@@ -115,8 +118,8 @@ public class List_Easy_Java8 {
         System.out.println("---------------------------------- > ");
 
         //20. Check if all names are non-null and length > 2
-        boolean valid = list.stream().anyMatch( s -> s != null && s.length() > 2);
-        System.out.println(valid);
+        boolean valid1 = list.stream().allMatch(s -> s != null && s.length() > 2);
+        System.out.println(valid1);
         System.out.println("---------------------------------- > ");
 
         //21.find second highest number
@@ -151,7 +154,7 @@ public class List_Easy_Java8 {
         System.out.println("Max: " + max);
 
         // Count
-        long count1 = numbers.stream().mapToInt(Integer::intValue).count();
+        long count1 = numbers.stream().count();
         System.out.println("Count: " + count1);
 
 

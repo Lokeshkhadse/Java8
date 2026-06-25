@@ -6,6 +6,10 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+//1. map(Employee::getSalary) using this - > it convert into Stream<Double> --> each double into Double(Object)
+//2. mapToDouble(Employee::getSalary) -> it convert into DoubleStream --> keeps double  (max,min,avg,sum)
+//3. employees.stream() -> convert into Stream<Employee>
+
 public class Java8_code_onEmployee {
     public static void main(String[] args) {
 
@@ -144,12 +148,12 @@ public class Java8_code_onEmployee {
         //24.Get the youngest employee in IT
         Employee youngestITEMP = employees.stream().filter(e -> e.getDepartment().equals("IT"))
                 .min(Comparator.comparingInt(Employee::getAge)).orElse(null);
+
         System.out.println("youngest employee in IT -> " + youngestITEMP);
         System.out.println("------------------------------------");
 
 
         //25.Average salary by department
-
         Map<String, Double>avgSalaryByDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.averagingDouble(Employee::getSalary)));
         System.out.println("Average salary by department->" + avgSalaryByDept);
         System.out.println("------------------------------------");
@@ -192,6 +196,7 @@ public class Java8_code_onEmployee {
                     mapToDouble(Employee::getSalary)
                     .max().orElse(0.0);
             List<Employee> listEmp = employees.stream().filter(e -> e.getSalary() == maxSal).toList();
+
 
         double maxsal1 = employees.stream().map(Employee::getSalary).sorted(Comparator.reverseOrder()).findFirst().orElse(0.0);
         List<Employee> listEmp1 = employees.stream().filter(e -> e.getSalary() == maxsal1).toList();
@@ -265,11 +270,28 @@ public class Java8_code_onEmployee {
                                     .sorted(Comparator.reverseOrder())
                                     .skip(1)
                                     .findFirst()
+
                             )
                     ));
-
-
         System.out.println(" dept wise 2nd highest salary ->" + dept2ndHighest);
+
+
+        Map<String, Optional<Double>> deptHighestsal = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                list -> Optional.of(
+                                        list.stream()
+                                                .mapToDouble(Employee::getSalary)
+                                                .max()
+                                                .orElse(-1.0) // रिटर्न टाइप double है, जिसे Optional.of() में डाला गया है
+                                )
+                        )
+                ));
+
+
+        System.out.println("dept  highest salary another approach ->" + deptHighestsal);
 
         //41. Dept wise 2nd lowest salary
         Map<String,Optional<Double>> dept2ndLowest = employees.stream().
@@ -290,8 +312,23 @@ public class Java8_code_onEmployee {
                 collect(Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary)),l -> l.get().getName()));
         System.out.println("max salary employee name -> " + name);
 
+        //another approach
 
-       //43 Find count of employees in each department but return result as Integer instead of Long.
+        double maxSalary = employees.stream()
+                .mapToDouble(Employee::getSalary)
+                .max()
+                .orElse(0.0);
+
+        String nameEmp = employees.stream()
+                .filter(e -> e.getSalary() == maxSalary)
+                .map(Employee::getName)
+                .findFirst()
+                .orElse("No Employee Found");
+        System.out.println("max employee salary name another approach _> " + nameEmp);
+
+
+
+        //43 Find count of employees in each department but return result as Integer instead of Long.
         Map<String, Integer> deptCnt =
                 employees.stream()
                         .collect(Collectors.groupingBy(

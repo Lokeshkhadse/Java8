@@ -25,6 +25,7 @@ public class optional_of_ofNullable_empty {
 
         Optional<String> abc1 = Optional.ofNullable("");  //" " not null value
         System.out.println(abc1);  //Optional[]
+        System.out.println(abc1.get());   // no output
         System.out.println(abc1.isEmpty());  //false
         System.out.println(abc1.isPresent()); //true
 

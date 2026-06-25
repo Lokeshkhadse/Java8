@@ -3,7 +3,10 @@ package String;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
+//1. mapToObj(c -> String.valueOf((char) c)
+//      c -> (char)c -> intstream(int) to char ex 65 -< 'A'
+//      String.valueOf((char)c) -> char to String object -> "A"
+//  mapToObj -> convert string object to Stream<String>
 public class String_java8 {
     public static void main(String[] args) {
         //1. Convert string to uppercase

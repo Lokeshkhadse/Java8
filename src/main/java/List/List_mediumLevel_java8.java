@@ -5,6 +5,21 @@ import java.util.List;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+// 1. string.chars() मेथड 'Character' नहीं, बल्कि 'IntStream' (primitive int) रिटर्न करता है।
+//    जावा बैकएंड में अक्षरों को स्टोर करने के लिए IntStream (ASCII/Unicode values) का इस्तेमाल करता है।
+
+// 2. mapToObj(c -> (char)c) उस primitive int को वापस primitive char में टाइपकास्ट करता है,
+//    और mapToObj उसे 'Character' Object में कन्वर्ट (Auto-box) कर देता है। [Stream<Character>]
+
+// 3. char -> Java isko Instream mai store karta hai , kyukiii [CharStream] aaisa kuch java mai nahi hai
+//4 filter -> method always return stream (but uska res true and false chahiye )
+//5 allMatch , anyMatch , noneMatch - > always return boolean
+
+//6  s.chars() -> Intstream  boxed() -> intstream se Stream<Integer>
+//7. list.stream() -> convert to Stream<Integer>
 
 public class List_mediumLevel_java8 {
     public static void main(String[] args) {
@@ -56,6 +71,8 @@ public class List_mediumLevel_java8 {
         //9. Check if any name contains a digit
         List<String> list = Arrays.asList("Rahul", "Ankita1", "Ajay");
         boolean checkDigitContains = list.stream().anyMatch(s -> s.matches(".*\\d.*"));
+        boolean res = list.stream().anyMatch(s -> s.chars().mapToObj(c -> (char)c).anyMatch(Character::isDigit));
+        System.out.println(res);
         System.out.println(checkDigitContains);
 
         //or
@@ -69,7 +86,7 @@ public class List_mediumLevel_java8 {
         String s1 = "abc";
         String  s2 = "bca";
 
-        boolean isAnagram = s1.length() == s2.length() && s1.chars().sorted().boxed().collect(Collectors.toList()).equals(s2.chars().sorted().boxed().collect(Collectors.toList()));
+        boolean isAnagram = s1.length() == s2.length() && s1.chars().boxed().sorted().collect(Collectors.toList()).equals(s2.chars().boxed().sorted().collect(Collectors.toList()));
         System.out.println(isAnagram);
         System.out.println("------------------------------------------");
 
@@ -82,6 +99,56 @@ public class List_mediumLevel_java8 {
                         .equals(s4.toLowerCase().chars().sorted().boxed().collect(Collectors.toList()));
         System.out.println(isAnagram1);
         System.out.println("------------------------------------------");
+
+        boolean isAnagramcheck = s1.length() == s2.length() &&
+                Arrays.equals(s1.chars().sorted().toArray(),
+                        s2.chars().sorted().toArray());
+
+
+      //11 .find the product of all number
+        List<Integer>ll = Arrays.asList(1,2,3,4);
+        int ans = ll.stream().reduce(1,(a,b)-> a*b);
+        System.out.println("prodcut is -> " +ans);
+
+        //12 . check give me prime number
+        List<Integer> prime = ll.stream().filter(no -> no > 1 && IntStream.rangeClosed(2, (int)Math.sqrt(no)).noneMatch(num -> no % num == 0)).toList();
+        System.out.println("prime number -> " + prime);
+
+        //13 Merge two integer lists and sort them in reverse order without duplicates
+        List<Integer> l1 = Arrays.asList(1, 3, 5);
+        List<Integer> l2 = Arrays.asList(3, 4, 6);
+        List<Integer> mergedSorted = Stream.concat(l1.stream(), l2.stream()).distinct().sorted(Comparator.reverseOrder()).toList();
+        System.out.println("Merged Reverse Sorted: " + mergedSorted);
+
+        //14 .Find the absolute differences between adjacent elements in a list
+        List<Integer> diffList = Arrays.asList(10, 25, 33, 40);
+        List<Integer>diffs = IntStream.range(0,diffList.size()-1).  // here it is in Intstream
+                            map(i -> Math.abs(diffList.get(i) - diffList.get(i+1))).boxed().toList();
+        System.out.println("Adjacent Differences: " + diffs);
+
+        //15    Find the total number of characters across all strings in a list
+        List<String> itemsList = Arrays.asList("Java", "C", "Python");
+        int totalChars = itemsList.stream().mapToInt(String::length).sum();
+        System.out.println("Total characters count: " + totalChars);
+
+        //or
+        String s= itemsList.stream().collect(Collectors.joining(""));
+        System.out.println(s);
+        System.out.println(s.length());
+
+        //16 Find the string with the maximum number of unique characters
+        List<String> uniqCheck = Arrays.asList("apple", "dinosaur", "java");
+        String maxUnique = uniqCheck.stream().max(Comparator.comparingLong(p -> p.chars().distinct().count())).orElse("");
+        System.out.println("Max Unique Chars String: " + maxUnique);
+
+
+        //17  Convert a list of strings into a single comma-separated string enclosed in brackets [...]
+        List<String> tags = Arrays.asList("Java", "Spring", "Docker");
+        String formattedResult = tags.stream().collect(Collectors.joining(", ", "[", "]"));
+        System.out.println("Formatted String: " + formattedResult);
+
+
+
 
 
 
