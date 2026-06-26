@@ -28,7 +28,7 @@ public class Medium_Hard_String {
 
 
         //3.Get all unique characters sorted alphabetically
-        String uniqueCharString = input.chars().distinct().mapToObj(c -> String.valueOf((char) c)).collect(Collectors.joining());
+        String uniqueCharString = input.chars().distinct().mapToObj(c -> String.valueOf((char) c)).sorted().collect(Collectors.joining());
         System.out.println("uniqueCharString -> " +uniqueCharString);
         System.out.println("---------------------------------------------");
 
@@ -42,13 +42,17 @@ public class Medium_Hard_String {
         String abc = "Java8 Stream";
         Map<String,Long> ans = abc.toLowerCase()
                 .chars()
-                .filter(c -> Character.isLetter(c))
                 .mapToObj(c -> "aeiou".indexOf(c) != -1 ? "vowels" : "consonants")
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        System.out.println("count of vowels & constant -> " + ans);
+        System.out.println("count of vowels &                                                                                                                                                       constant -> " + ans);
         System.out.println("---------------------------------------------");
 
-
+        //6. Find the longest word in a sentence
+        String sentence1 = "I love competitive programming";
+        String longestword = Arrays.stream(sentence1.split(" "))
+                          .max(Comparator.comparingInt(String::length))
+                        .orElse("");
+        System.out.println("longest word -> " + longestword);
 
 
 

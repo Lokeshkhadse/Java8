@@ -7,6 +7,10 @@ import java.util.stream.Collectors;
 //      c -> (char)c -> intstream(int) to char ex 65 -< 'A'
 //      String.valueOf((char)c) -> char to String object -> "A"
 //  mapToObj -> convert string object to Stream<String>
+
+//isDigit -> onlynumber remove ( special charater , spaces and alphabate not)
+//isLetter -> only [A-Za-z] yaha rehage baki sb remove
+
 public class String_java8 {
     public static void main(String[] args) {
         //1. Convert string to uppercase
