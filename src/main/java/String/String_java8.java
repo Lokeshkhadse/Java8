@@ -1,5 +1,6 @@
 package String;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -106,13 +107,13 @@ public class String_java8 {
         //or
         String result = digit.replaceAll("[0-9]", "");
 
-        // find count of each char and return first char whose cnt is more than 1
+        //13. find count of each char and return first char whose cnt is more than 1
         String z = "abcabcABc";
         Map<Character,Long> map= z.chars().mapToObj(c -> (char)c).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting()));
         char zz = map.entrySet().stream().filter(e -> e.getValue() > 1).map(Map.Entry::getKey).findFirst().orElse('0');
         System.out.println("first character comes multiple time is -> " + zz);
 
-        //remove speical character , whitesapce and number
+        //14.remove speical character , whitesapce and number
         String m = "Hii m8y; Name is loki";
         String finans = m.chars().map(Character::toLowerCase).filter(Character::isLetter).mapToObj(ch4 -> String.valueOf((char)ch4)).collect(Collectors.joining());
         System.out.println(finans);
@@ -121,7 +122,7 @@ public class String_java8 {
         boolean ans = test.chars().mapToObj(c -> (char)c).allMatch(ch22 -> Character.isAlphabetic(ch22));
         System.out.println(ans);
 
-        //reverse sentence
+        //15.reverse sentence
         String ax = "hii lokii how are you";
          List<String> anc = Arrays.asList(ax.split(" "));
          Collections.reverse(anc);
@@ -136,6 +137,44 @@ public class String_java8 {
                         }));
 
         System.out.println(mm);
+
+        //16.give me total sum of digit
+        String str11 = "A3B2C5";
+        int sum = str11.chars()
+                .filter(Character::isDigit)
+                .map(Character::getNumericValue)
+                .sum();
+        System.out.println(sum);
+
+        int sum2 = str11.chars()
+                .mapToObj(c -> (char) c)
+                .filter(Character::isDigit)
+                .mapToInt(c -> Integer.parseInt(String.valueOf(c)))
+                .sum();
+
+        //17.make first letter captial
+        String ss = "hey boy how ar u";
+        String answerString = Arrays.stream(ss.split(" "))
+                .map(word -> word.substring(0,1).toUpperCase() + word.substring(1))
+                .collect(Collectors.joining());
+        System.out.println("first letter capital -> " + answerString);
+
+        //18. स्ट्रिंग के शब्दों को उनकी लंबाई (Length) के आधार पर सॉर्ट करना
+        String q  = Arrays.stream(ss.split(" "))
+                .sorted(Comparator.comparingInt(String::length))
+                .collect(Collectors.joining());
+        System.out.println("sorted as per of length " + q);
+
+        //or
+
+        List<String> qq = Arrays.asList(ss.split(" ")).stream()
+                .sorted(Comparator.comparingInt(String::length))
+                .toList();
+
+
+
+
+
 
 
 

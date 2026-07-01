@@ -149,6 +149,18 @@ public class List_mediumLevel_java8 {
 
 
 
+        List<List<String>> ab = Arrays.asList(
+                Arrays.asList("hii my name is loki"),
+                Arrays.asList("how are you")
+        );
+
+        List<String> wordsSeparate = ab.stream().flatMap(list10 -> list10.stream())
+                .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
+                .collect(Collectors.toList());
+        System.out.println(wordsSeparate);
+
+
+
 
 
 

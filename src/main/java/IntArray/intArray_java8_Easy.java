@@ -6,8 +6,10 @@ import java.util.stream.IntStream;
 // 2 type in stream is Intermediate ( that is use for perform operation on element)
 //                     Terminal ( to collect data)
 
-//boxed -> is used to convert intstream to stream object
+//boxed -> is used to convert intstream to stream object  //instream to Stream<Integer>
 // map to object -> is used to convert primitive type to object or stream<Object>
+
+// Arrays.stream(nums) इसे IntStream mai convert karta hai  ex:- int[] means int ko Intstream mai
 
 public class intArray_java8_Easy {
     public static void main(String[] args) {
